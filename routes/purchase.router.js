@@ -23,4 +23,22 @@ purchaseRote.post('/purchases', async (req, res) => {
   }
 });
 //
+// 3.2 Crie a rota GET /purchases/:purchaseId
+//
+purchaseRote.get('/purchases/:purchaseId', async (req, res) => {
+  try {
+    const { purchaseId } = req.params;
+    //
+    const onePurchase = await PurchaseModel.findById(purchaseId).populate(
+      'album'
+    );
+
+    return res.status(201).json(onePurchase);
+    //
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json(error.errors);
+  }
+});
+//
 export default purchaseRote;
