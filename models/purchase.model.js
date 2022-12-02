@@ -5,6 +5,7 @@ const purchaseSchema = new Schema({
   album: { type: Schema.Types.ObjectId, ref: 'Album' },
 });
 
+// o Mongo vai fazer collection com nome: 'Purchase'-> 'purchases'
 const PurchaseModel = model('Purchase', purchaseSchema);
 
 export default PurchaseModel;

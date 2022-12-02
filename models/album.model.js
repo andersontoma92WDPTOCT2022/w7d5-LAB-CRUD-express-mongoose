@@ -6,6 +6,7 @@ const albumSchema = new Schema({
   cost: { type: Number },
 });
 
+// o Mongo vai fazer collection com nome: 'Album'-> 'albums'
 const AlbumModel = model('Album', albumSchema);
 
 export default AlbumModel;

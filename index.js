@@ -17,6 +17,7 @@ app.use(express.json());
 // SUAS ROTAS AQUI!!! v v v não esqueça de importá-las!
 
 app.use('/album', albumRoute);
+
 app.use('/purchase', purchaseRote);
 //
 
