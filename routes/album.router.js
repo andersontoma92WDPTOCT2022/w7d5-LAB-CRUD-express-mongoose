@@ -38,6 +38,10 @@ albumRoute.get('/albums/:albumId', async (req, res) => {
     //
     const { albumId } = req.params;
     const oneAlbum = await AlbumModel.findById(albumId);
+    //
+    if (!oneAlbum) {
+      return res.status(400).json({ err: 'não existe!' });
+    }
     return res.status(200).json(oneAlbum);
     //
   } catch (error) {
@@ -59,6 +63,22 @@ albumRoute.get('/edit/:albumId', async (req, res) => {
     );
     //
     return res.status(200).json(updatedAlbum);
+    //
+  } catch (error) {
+    onsole.log(error);
+    return res.status(400).json(error.errors);
+  }
+});
+//
+// 2.5 Crie a rota DELETE /albums/:albumId
+//
+albumRoute.delete('/albums/:albumId', async (req, res) => {
+  try {
+    //
+    const { albumId } = req.params;
+
+    const deletedAlbum = await AlbumModel.findByIdAndDelete(albumId);
+    return res.status(204).json(deletedAlbum);
     //
   } catch (error) {
     onsole.log(error);
