@@ -1,7 +1,10 @@
-import express from "express";
-import * as dotenv from "dotenv";
-import connect from "./config/db.config.js";
+import express from 'express';
+import * as dotenv from 'dotenv';
+import connect from './config/db.config.js';
 const app = express();
+// -- gitHub
+// https://github.com/andersontoma92WDPTOCT2022/w7d5-LAB-CRUD-express-mongoose
+//
 
 dotenv.config();
 connect();
