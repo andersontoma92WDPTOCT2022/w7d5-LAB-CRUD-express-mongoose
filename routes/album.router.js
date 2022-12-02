@@ -46,5 +46,25 @@ albumRoute.get('/albums/:albumId', async (req, res) => {
   }
 });
 //
+// 2.4 Crie a rota PUT /albums/:albumId
+//
+albumRoute.get('/edit/:albumId', async (req, res) => {
+  try {
+    //
+    const { albumId } = req.params;
+    const updatedAlbum = await AlbumModel.findOneAndUpdate(
+      { albumId: albumId },
+      { ...req.body },
+      { new: true, runValidators: true }
+    );
+    //
+    return res.status(200).json(updatedAlbum);
+    //
+  } catch (error) {
+    onsole.log(error);
+    return res.status(400).json(error.errors);
+  }
+});
+//
 
 export default albumRoute;
