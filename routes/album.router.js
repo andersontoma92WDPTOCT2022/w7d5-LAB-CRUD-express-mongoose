@@ -31,5 +31,20 @@ albumRoute.get('/albums', async (req, res) => {
   }
 });
 //
+// 2.3 Crie a rota GET /albums/:albumId
+//
+albumRoute.get('/albums/:albumId', async (req, res) => {
+  try {
+    //
+    const { albumId } = req.params;
+    const oneAlbum = await AlbumModel.findById(albumId);
+    return res.status(200).json(oneAlbum);
+    //
+  } catch (error) {
+    onsole.log(error);
+    return res.status(400).json(error.errors);
+  }
+});
+//
 
 export default albumRoute;
